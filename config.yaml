@@ -1,0 +1,159 @@
+# =====================================================================
+#  JOBWATCH SETTINGS - edit this file in your browser on GitHub
+#  (open the file, click the pencil icon, change, then "Commit changes")
+#  Lines starting with # are notes and are ignored.
+# =====================================================================
+
+# Who receives the digest is set in GitHub Secrets (see README).
+
+# ---------------------------------------------------------------------
+# REGIONS, in your priority order. The email shows them in this order.
+#   adzuna: country codes searched on Adzuna
+#   jooble: country names searched on Jooble (covers places Adzuna doesn't)
+# Delete a line to stop searching that country.
+# ---------------------------------------------------------------------
+regions:
+  - name: "Europe"
+    adzuna: [fr, de, nl, be, at, it, es, pl, gb, ch]   # gb = UK, ch = Switzerland (not EU, remove if unwanted)
+    jooble: ["Ireland", "Portugal", "Czech Republic", "Sweden", "Denmark", "Romania"]
+  - name: "Australia"
+    adzuna: [au]
+  - name: "Singapore"
+    adzuna: [sg]
+  - name: "Canada"
+    adzuna: [ca]
+  - name: "Middle East"
+    jooble: ["United Arab Emirates", "Saudi Arabia", "Qatar", "Oman", "Bahrain", "Kuwait"]
+  - name: "Southeast Asia"
+    jooble: ["Indonesia", "Philippines", "Vietnam", "Thailand"]
+  - name: "India"
+    adzuna: [in]
+
+# ---------------------------------------------------------------------
+# WHAT TO SEARCH FOR
+# ---------------------------------------------------------------------
+# Adzuna: one broad aviation search per country; jobs are then filtered
+# by role_keywords below. (Keeps us well inside the free API limits.)
+adzuna_query: "aircraft aviation aerospace airline airworthiness CAMO MRO"
+adzuna_pages: 2          # 50 jobs per page, per country
+max_days_old: 3
+
+# Jooble: specific searches, each run for every Jooble country.
+jooble_searches:
+  - "CAMO aviation"
+  - "continuing airworthiness"
+  - "aircraft technical records"
+  - "aviation technical documentation"
+  - "aviation procurement"
+  - "aviation supply chain logistics"
+  - "aviation technical services"
+  - "aviation consultant"
+
+# A job must match at least ONE of these (in title or description).
+# Includes French/German/Spanish/Dutch terms so local listings are caught.
+role_keywords:
+  - camo
+  - continuing airworthiness
+  - airworthiness
+  - technical record
+  - records
+  - technical documentation
+  - documentation
+  - technical publication
+  - technical writer
+  - technical author
+  - technical services
+  - technical support
+  - procurement
+  - purchas
+  - buyer
+  - sourcing
+  - supply chain
+  - logistic
+  - material
+  - spares
+  - aog
+  - consult
+  - contract
+  - warranty
+  - reliability
+  - fleet
+  - planning
+  - planner
+  # French
+  - navigabilité
+  - achat
+  - acheteur
+  - approvisionnement
+  - logistique
+  - documentation technique
+  # German
+  - lufttüchtigkeit
+  - einkauf
+  - einkäufer
+  - beschaffung
+  - logistik
+  - technische dokumentation
+  # Spanish / Dutch
+  - aeronavegabilidad
+  - compras
+  - inkoop
+
+# A job must ALSO mention aviation somewhere (stops generic procurement jobs).
+aviation_keywords:
+  - aircraft
+  - aviation
+  - aerospace
+  - airline
+  - airworthiness
+  - camo
+  - mro
+  - easa
+  - part-m
+  - part-145
+  - part 145
+  - part-camo
+  - helicopter
+  - airbus
+  - boeing
+  - embraer
+  - atr
+  - aeronautic
+  - aéronautique
+  - aéronef
+  - luftfahrt
+  - flugzeug
+  - aviación
+  - aeronáutic
+  - luchtvaart
+
+# Skip a job if its TITLE contains any of these.
+exclude_title_keywords:
+  - intern
+  - internship
+  - stage
+  - stagiaire
+  - alternance
+  - apprentice
+  - apprenti
+  - ausbildung
+  - praktikum
+  - praktikant
+  - werkstudent
+  - pilot
+  - cabin crew
+  - flight attendant
+  - driver
+
+# ---------------------------------------------------------------------
+# GOOGLE ALERTS (covers general web + recruitment agencies)
+# Paste RSS feed links here, one per line, in quotes. See README step 6.
+# ---------------------------------------------------------------------
+rss_feeds: []
+#  - "https://www.google.com/alerts/feeds/XXXXXXXX/YYYYYYYY"
+
+# ---------------------------------------------------------------------
+# EMAIL
+# ---------------------------------------------------------------------
+max_jobs_per_region: 40
+send_when_empty: true     # true = you get a short "nothing new today" email
